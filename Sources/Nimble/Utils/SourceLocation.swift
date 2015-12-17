@@ -1,8 +1,13 @@
 import Foundation
 
+#if os(Linux)
+public typealias FileString = StaticString
+#else
+public typealias FileString = String
+#endif
 
 public class SourceLocation : NSObject {
-    public let file: String
+    public let file: FileString
     public let line: UInt
 
     override init() {
@@ -10,7 +15,7 @@ public class SourceLocation : NSObject {
         line = 0
     }
 
-    init(file: String, line: UInt) {
+    init(file: FileString, line: UInt) {
         self.file = file
         self.line = line
     }
