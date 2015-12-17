@@ -14,6 +14,7 @@ internal enum PollResult : BooleanType {
     }
 }
 
+#if !os(Linux)
 internal class RunPromise {
     var token: dispatch_once_t = 0
     var didFinish = false
@@ -48,8 +49,10 @@ internal func stopRunLoop(runLoop: NSRunLoop, delay: NSTimeInterval) -> RunPromi
     }
     return promise
 }
+#endif
 
 internal func pollBlock(pollInterval pollInterval: NSTimeInterval, timeoutInterval: NSTimeInterval, expression: () throws -> Bool) -> PollResult {
+#if !os(Linux)
     let runLoop = NSRunLoop.mainRunLoop()
 
     let promise = stopRunLoop(runLoop, delay: min(timeoutInterval, 0.2))
@@ -83,4 +86,12 @@ internal func pollBlock(pollInterval pollInterval: NSTimeInterval, timeoutInterv
     }
 
     return pass ? .Success : .Failure
+#else
+    do {
+        let pass = try expression()
+        return pass ? .Success : .Failure
+    } catch let error {
+        return .ErrorThrown(error)
+    }
+#endif
 }
