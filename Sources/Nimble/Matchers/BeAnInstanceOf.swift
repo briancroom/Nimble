@@ -21,7 +21,12 @@ public func beAnInstanceOf(expectedClass: AnyClass) -> NonNilMatcherFunc<NSObjec
             failureMessage.actualValue = "<nil>"
         }
         failureMessage.postfixMessage = "be an instance of \(NSStringFromClass(expectedClass))"
+         
+#if !os(Linux)
         return instance != nil && instance!.isMemberOfClass(expectedClass)
+#else
+        return instance != nil && instance!.dynamicType == expectedClass
+#endif
     }
 }
 
