@@ -36,5 +36,9 @@ class NimbleXCTestUnavailableHandler : AssertionHandler {
 }
 
 func isXCTestAvailable() -> Bool {
+#if !os(Linux)
     return NSClassFromString("XCTestCase") != nil
+#else
+    return true
+#endif
 }
