@@ -16,9 +16,18 @@ internal func arrayAsString<T>(items: [T], joiner: String = ", ") -> String {
     }
 }
 
+#if !os(Linux)
 @objc internal protocol NMBStringer {
     func NMB_stringify() -> String
 }
+
+extension NSArray : NMBStringer {
+    func NMB_stringify() -> String {
+        let str = self.componentsJoinedByString(", ")
+        return "[\(str)]"
+    }
+}
+#endif
 
 internal func stringify<S: SequenceType>(value: S) -> String {
     var generator = value.generate()
@@ -32,13 +41,6 @@ internal func stringify<S: SequenceType>(value: S) -> String {
     } while value != nil
     let str = strings.joinWithSeparator(", ")
     return "[\(str)]"
-}
-
-extension NSArray : NMBStringer {
-    func NMB_stringify() -> String {
-        let str = self.componentsJoinedByString(", ")
-        return "[\(str)]"
-    }
 }
 
 internal func stringify<T>(value: T) -> String {

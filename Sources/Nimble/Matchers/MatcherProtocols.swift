@@ -15,33 +15,79 @@ public protocol Matcher {
 }
 #endif
 
+#if !os(Linux)
 /// Protocol for types that support contain() matcher.
 @objc public protocol NMBContainer {
     func containsObject(object: AnyObject!) -> Bool
 }
+
+extension NSHashTable : NMBContainer {} // Corelibs Foundation does not include this class yet
+#else
+public protocol NMBContainer {
+    func containsObject(object: AnyObject) -> Bool
+}
+#endif
+
 extension NSArray : NMBContainer {}
 extension NSSet : NMBContainer {}
-extension NSHashTable : NMBContainer {}
 
+#if !os(Linux)
 /// Protocol for types that support only beEmpty(), haveCount() matchers
 @objc public protocol NMBCollection {
     var count: Int { get }
 }
+
+extension NSHashTable : NMBCollection {} // Corelibs Foundation does not include these classes yet
+extension NSMapTable : NMBCollection {}
+#else
+public protocol NMBCollection {
+    var count: Int { get }
+}
+#endif
+
 extension NSSet : NMBCollection {}
 extension NSDictionary : NMBCollection {}
-extension NSHashTable : NMBCollection {}
-extension NSMapTable : NMBCollection {}
 
+#if !os(Linux)
 /// Protocol for types that support beginWith(), endWith(), beEmpty() matchers
 @objc public protocol NMBOrderedCollection : NMBCollection {
     func indexOfObject(object: AnyObject!) -> Int
 }
+#else
+public protocol NMBOrderedCollection : NMBCollection {
+    func indexOfObject(object: AnyObject) -> Int
+}
+#endif
+
 extension NSArray : NMBOrderedCollection {}
 
+#if !os(Linux)
 /// Protocol for types to support beCloseTo() matcher
 @objc public protocol NMBDoubleConvertible {
     var doubleValue: CDouble { get }
 }
+#else
+public protocol NMBDoubleConvertible {
+    var doubleValue: CDouble { get }
+}
+
+extension Double : NMBDoubleConvertible {
+    public var doubleValue: CDouble {
+        get {
+            return self
+        }
+    }
+}
+
+extension Float : NMBDoubleConvertible {
+    public var doubleValue: CDouble {
+        get {
+            return CDouble(self)
+        }
+    }
+}
+#endif
+
 extension NSNumber : NMBDoubleConvertible {
 }
 
@@ -86,9 +132,17 @@ extension NMBDoubleConvertible {
 ///  beGreaterThan(), beGreaterThanOrEqualTo(), and equal() matchers.
 ///
 /// Types that conform to Swift's Comparable protocol will work implicitly too
+#if !os(Linux)
 @objc public protocol NMBComparable {
     func NMB_compare(otherObject: NMBComparable!) -> NSComparisonResult
 }
+#else
+// This should become obsolete once Corelibs Foundation adds Comparable conformance to NSNumber
+public protocol NMBComparable {
+    func NMB_compare(otherObject: NMBComparable!) -> NSComparisonResult
+}
+#endif
+
 extension NSNumber : NMBComparable {
     public func NMB_compare(otherObject: NMBComparable!) -> NSComparisonResult {
         return compare(otherObject as! NSNumber)
