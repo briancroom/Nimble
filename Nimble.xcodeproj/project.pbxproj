@@ -565,7 +565,8 @@
 				1F925EE3195C11B000ED456B /* Matchers */,
 				1F1A74391940169200FFFC47 /* Supporting Files */,
 			);
-			path = NimbleTests;
+			name = NimbleTests;
+			path = Sources/NimbleTests;
 			sourceTree = "<group>";
 		};
 		1F1A74391940169200FFFC47 /* Supporting Files */ = {
@@ -1467,13 +1468,13 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = NimbleTests/Info.plist;
+				INFOPLIST_FILE = Sources/NimbleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.jeffhui.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = NimbleTests;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos";
-				SWIFT_OBJC_BRIDGING_HEADER = "NimbleTests/objc/NimbleTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sources/NimbleTests/objc/NimbleTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1486,13 +1487,13 @@
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = NimbleTests/Info.plist;
+				INFOPLIST_FILE = Sources/NimbleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.jeffhui.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = NimbleTests;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos";
-				SWIFT_OBJC_BRIDGING_HEADER = "NimbleTests/objc/NimbleTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sources/NimbleTests/objc/NimbleTests-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -1570,12 +1571,13 @@
 					"$(inherited)",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = NimbleTests/Info.plist;
+				INFOPLIST_FILE = Sources/NimbleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.jeffhui.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = NimbleTests;
 				SDKROOT = appletvos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Sources/NimbleTests/objc/Nimble-OSXTests-Bridging-Header.h";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
@@ -1590,12 +1592,13 @@
 					"$(inherited)",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = NimbleTests/Info.plist;
+				INFOPLIST_FILE = Sources/NimbleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.jeffhui.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = NimbleTests;
 				SDKROOT = appletvos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Sources/NimbleTests/objc/Nimble-OSXTests-Bridging-Header.h";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
@@ -1686,14 +1689,14 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = NimbleTests/Info.plist;
+				INFOPLIST_FILE = Sources/NimbleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.jeffhui.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = NimbleTests;
 				SDKROOT = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = "NimbleTests/objc/Nimble-OSXTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sources/NimbleTests/objc/Nimble-OSXTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1708,14 +1711,14 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = NimbleTests/Info.plist;
+				INFOPLIST_FILE = Sources/NimbleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.jeffhui.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = NimbleTests;
 				SDKROOT = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = "NimbleTests/objc/Nimble-OSXTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sources/NimbleTests/objc/Nimble-OSXTests-Bridging-Header.h";
 			};
 			name = Release;
 		};
