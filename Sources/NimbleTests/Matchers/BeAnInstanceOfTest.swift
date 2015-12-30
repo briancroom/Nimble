@@ -23,10 +23,15 @@ class BeAnInstanceOfTest: XCTestCase, XCTestCaseProvider {
         failsWithErrorMessageForNil("expected to be an instance of NSString, got <nil>") {
             expect(nil as NSString?).to(beAnInstanceOf(NSString))
         }
-        failsWithErrorMessage("expected to be an instance of NSString, got <__NSCFNumber instance>") {
+#if os(Linux)
+        let numberTypeName = "NSNumber"
+#else
+        let numberTypeName = "__NSCFNumber"
+#endif
+        failsWithErrorMessage("expected to be an instance of NSString, got <\(numberTypeName) instance>") {
             expect(NSNumber(integer:1)).to(beAnInstanceOf(NSString))
         }
-        failsWithErrorMessage("expected to not be an instance of NSNumber, got <__NSCFNumber instance>") {
+        failsWithErrorMessage("expected to not be an instance of NSNumber, got <\(numberTypeName) instance>") {
             expect(NSNumber(integer:1)).toNot(beAnInstanceOf(NSNumber))
         }
     }

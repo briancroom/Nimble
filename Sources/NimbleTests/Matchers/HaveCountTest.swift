@@ -24,15 +24,17 @@ class HaveCountTest: XCTestCase, XCTestCaseProvider {
     }
 
     func testHaveCountForDictionary() {
-        expect(["1":1, "2":2, "3":3]).to(haveCount(3))
-        expect(["1":1, "2":2, "3":3]).notTo(haveCount(1))
+        let dict = ["1":1, "2":2, "3":3]
 
-        failsWithErrorMessage("expected to have [\"2\": 2, \"1\": 1, \"3\": 3] with count 1, got 3") {
-            expect(["1":1, "2":2, "3":3]).to(haveCount(1))
+        expect(dict).to(haveCount(3))
+        expect(dict).notTo(haveCount(1))
+
+        failsWithErrorMessage("expected to have \(dict) with count 1, got 3") {
+            expect(dict).to(haveCount(1))
         }
 
-        failsWithErrorMessage("expected to not have [\"2\": 2, \"1\": 1, \"3\": 3] with count 3, got 3") {
-            expect(["1":1, "2":2, "3":3]).notTo(haveCount(3))
+        failsWithErrorMessage("expected to not have \(dict) with count 3, got 3") {
+            expect(dict).notTo(haveCount(3))
         }
     }
 
