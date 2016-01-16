@@ -55,6 +55,7 @@ func failsWithErrorMessageForNil(message: String, file: String = __FILE__, line:
     failsWithErrorMessage("\(message) (use beNil() to match nils)", file: file, line: line, preferOriginalSourceLocation: preferOriginalSourceLocation, closure: closure)
 }
 
+#if !os(Linux)
 func deferToMainQueue(action: () -> Void) {
     dispatch_async(dispatch_get_main_queue()) {
         NSThread.sleepForTimeInterval(0.01)
@@ -75,6 +76,7 @@ public class NimbleHelper : NSObject {
         failsWithErrorMessageForNil(message as String, file: file, line: line, preferOriginalSourceLocation: true, closure: block)
     }
 }
+#endif
 
 extension NSDate {
     convenience init(dateTimeString:String) {

@@ -1,6 +1,8 @@
 import XCTest
 import Nimble
 
+#if !os(Linux)
+
 class MatchTest: XCTestCase, XCTestCaseProvider {
     var allTests: [(String, () -> Void)] {
         return [
@@ -44,3 +46,4 @@ class MatchTest: XCTestCase, XCTestCaseProvider {
         }
     }
 }
+#endif

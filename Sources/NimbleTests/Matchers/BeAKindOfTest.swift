@@ -2,6 +2,8 @@ import Foundation
 import XCTest
 import Nimble
 
+#if !os(Linux)
+
 class TestNull : NSNull {}
 
 class BeAKindOfTest: XCTestCase, XCTestCaseProvider {
@@ -52,3 +54,4 @@ class BeAKindOfTest: XCTestCase, XCTestCaseProvider {
         }
     }
 }
+#endif

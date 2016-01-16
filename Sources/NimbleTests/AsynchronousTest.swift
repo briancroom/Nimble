@@ -2,6 +2,8 @@ import XCTest
 import Nimble
 import Swift
 
+#if !os(Linux)
+
 class AsyncTest: XCTestCase, XCTestCaseProvider {
     var allTests: [(String, () -> Void)] {
         return [
@@ -92,3 +94,4 @@ class AsyncTest: XCTestCase, XCTestCaseProvider {
         NSRunLoop.mainRunLoop().runUntilDate(NSDate().dateByAddingTimeInterval(2.0))
     }
 }
+#endif
