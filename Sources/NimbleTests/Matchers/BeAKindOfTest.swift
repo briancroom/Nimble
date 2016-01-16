@@ -1,9 +1,18 @@
+import Foundation
 import XCTest
 import Nimble
 
 class TestNull : NSNull {}
 
-class BeAKindOfTest: XCTestCase {
+class BeAKindOfTest: XCTestCase, XCTestCaseProvider {
+    var allTests: [(String, () -> Void)] {
+        return [
+            ("testPositiveMatch", testPositiveMatch),
+            ("testFailureMessages", testFailureMessages),
+            ("testSwiftTypesFailureMessages", testSwiftTypesFailureMessages),
+        ]
+    }
+
     func testPositiveMatch() {
         expect(TestNull()).to(beAKindOf(NSNull))
         expect(NSObject()).to(beAKindOf(NSObject))

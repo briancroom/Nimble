@@ -2,7 +2,17 @@ import XCTest
 import Nimble
 import Swift
 
-class AsyncTest: XCTestCase {
+class AsyncTest: XCTestCase, XCTestCaseProvider {
+    var allTests: [(String, () -> Void)] {
+        return [
+            ("testAsyncTestingViaEventuallyPositiveMatches", testAsyncTestingViaEventuallyPositiveMatches),
+            ("testAsyncTestingViaEventuallyNegativeMatches", testAsyncTestingViaEventuallyNegativeMatches),
+            ("testAsyncTestingViaWaitUntilPositiveMatches", testAsyncTestingViaWaitUntilPositiveMatches),
+            ("testAsyncTestingViaWaitUntilNegativeMatches", testAsyncTestingViaWaitUntilNegativeMatches),
+            ("testWaitUntilDetectsStalledMainThreadActivity", testWaitUntilDetectsStalledMainThreadActivity),
+        ]
+    }
+
     let errorToThrow = NSError(domain: NSInternalInconsistencyException, code: 42, userInfo: nil)
 
     private func doThrowError() throws -> Int {
