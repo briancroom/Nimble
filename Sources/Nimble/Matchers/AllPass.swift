@@ -47,6 +47,7 @@ private func createAllPassMatcher<T,U where U: SequenceType, U.Generator.Element
         }
 }
 
+#if !os(Linux)
 extension NMBObjCMatcher {
     public class func allPassMatcher(matcher: NMBObjCMatcher) -> NMBObjCMatcher {
         return NMBObjCMatcher(canMatchNil: false) { actualExpression, failureMessage in
@@ -88,3 +89,4 @@ extension NMBObjCMatcher {
         }
     }
 }
+#endif

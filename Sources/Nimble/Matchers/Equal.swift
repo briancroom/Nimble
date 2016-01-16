@@ -139,6 +139,7 @@ public func !=<T: Equatable, C: Equatable>(lhs: Expectation<[T: C]>, rhs: [T: C]
     lhs.toNot(equal(rhs))
 }
 
+#if !os(Linux)
 extension NMBObjCMatcher {
     public class func equalMatcher(expected: NSObject) -> NMBMatcher {
         return NMBObjCMatcher(canMatchNil: false) { actualExpression, failureMessage in
@@ -146,3 +147,4 @@ extension NMBObjCMatcher {
         }
     }
 }
+#endif

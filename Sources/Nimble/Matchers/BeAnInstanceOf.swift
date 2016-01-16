@@ -30,6 +30,7 @@ public func beAnInstanceOf(expectedClass: AnyClass) -> NonNilMatcherFunc<NSObjec
     }
 }
 
+#if !os(Linux)
 extension NMBObjCMatcher {
     public class func beAnInstanceOfMatcher(expected: AnyClass) -> NMBMatcher {
         return NMBObjCMatcher(canMatchNil: false) { actualExpression, failureMessage in
@@ -37,3 +38,4 @@ extension NMBObjCMatcher {
         }
     }
 }
+#endif

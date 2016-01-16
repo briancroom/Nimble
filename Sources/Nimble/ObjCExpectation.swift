@@ -1,5 +1,7 @@
 import Foundation
 
+#if !os(Linux)
+
 internal struct ObjCMatcherWrapper : Matcher {
     let matcher: NMBMatcher
 
@@ -125,3 +127,5 @@ public class NMBExpectation : NSObject {
         fail(message, location: SourceLocation(file: file, line: line))
     }
 }
+
+#endif
